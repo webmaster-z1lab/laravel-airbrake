@@ -57,7 +57,9 @@ class AirbrakeServiceProvider extends ServiceProvider
     {
         $filePath = $this->app->environmentPath() . '/' . $this->app->environmentFile();
 
-        return file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $envFile = @file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+        return is_array($envFile) ? $envFile : [];
     }
 
     protected function getEnvKeyFromLine($envLine)
