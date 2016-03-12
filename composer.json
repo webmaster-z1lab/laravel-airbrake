@@ -1,0 +1,22 @@
+{
+    "name": "kouz/laravel-airbrake",
+    "description": "Laravel service provider for Airbrake https://github.com/airbrake/phpbrake",
+    "keywords": ["airbrake", "laravel"],
+    "require": {
+        "php": ">=5.4",
+        "airbrake/phpbrake": "^0.0.12",
+        "illuminate/support": "5.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Theo Kouzelis",
+            "email": "theo@theo.codes"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Kouz\\Providers\\": "src/"
+        }
+    },
+}
