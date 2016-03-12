@@ -18,5 +18,5 @@
         "psr-4": {
             "Kouz\\Providers\\": "src/"
         }
-    },
+    }
 }
