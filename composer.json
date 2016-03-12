@@ -18,5 +18,7 @@
         "psr-4": {
             "Kouz\\Providers\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
