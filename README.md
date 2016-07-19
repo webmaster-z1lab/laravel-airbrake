@@ -28,3 +28,59 @@ Publish and fill out the config/airbrake.php file with your ID and key.
 php artisan vendor:publish --provider="Kouz\Providers\AirbrakeServiceProvider"
 ```
 
+## Basic Usage
+### Exception Handler
+The easiest way to notify airbrake is through the laravel exception handler as shown in the following code snippet. Inject or make a new instance
+of a Airbrake\Notifier object then pass a exception to the notify function.
+
+```
+//app/Exceptions/Handler.php
+
+use App;
+
+class Handler extends ExceptionHandler
+{ 
+    /**
+     * A list of the exception types that should not be reported.
+     *
+     * @var array
+     */
+    protected $dontReport = [
+        AuthorizationException::class,
+        HttpException::class,
+        ModelNotFoundException::class,
+        ValidationException::class,
+    ];
+
+    /**
+     * Report or log an exception.
+     *
+     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
+     *
+     * @param  \Exception  $e
+     * @return void
+     */
+    public function report(Exception $e)
+    {
+        if ($this->shouldReport($e)) {
+            $airbrake = App::make('Airbrake\Notifier');
+            $airbrake->notify($e);
+        }
+
+        parent::report($e);
+    }
+}
+```
+
+### Custom Monolog Configuration 
+To configure it as a Monolog handler you will have to create a custom configuration in bootstrap/app.php. This callback function is called 
+before the service providers are loaded. So it is necessary to directly use our AirbrakeHandler class instead of the provider.
+
+```
+//bootstrap/app.php
+
+$app->configureMonologUsing(function($monolog) use ($app) {
+    $airbrakeNotifier = (new Kouz\Providers\AirbrakeHandler($app))->handle();
+    $monolog->pushHandler(new Airbrake\MonologHandler($airbrakeNotifier, Monolog\Logger::ERROR));
+});
+
