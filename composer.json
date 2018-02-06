@@ -4,7 +4,7 @@
     "keywords": ["airbrake", "laravel"],
     "require": {
         "php": ">=5.4",
-        "airbrake/phpbrake": "^0.0.12",
+        "airbrake/phpbrake": "^0.5.2",
         "illuminate/support": "5.*"
     },
     "license": "MIT",
@@ -20,5 +20,12 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kouz\\Providers\\AirbrakeServiceProvider"
+            ]
+        }
+    }
 }
