@@ -2,8 +2,15 @@
 
 return [
 
-    'id'  => '',
+    'projectId'     => '',
+    'projectKey'    => '',
+    'environment'   => env('APP_ENV', 'production'),
 
-    'key' => '',
+    //leave the following options empty to use defaults
+
+    'appVersion'    => '',
+    'host'          => '',
+    'rootDirectory' => '',
+    'httpClient'    => '',
 
 ];
