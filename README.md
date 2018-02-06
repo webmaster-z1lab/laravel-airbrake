@@ -4,17 +4,12 @@ This is a Laravel service provider for the latest Airbrake PHP package https://g
 
 The service provider will configure an instance of Airbrake\Notifier with an ID, key and environment name.
 
-The service provider will also filter out sensitive variables set in your project's .env file out of notifications sent to Airbrake. Any variable set in the .env file will appear with a value of "FILTERED" in the env tab of an Airbrake report.
-```
-"APP_KEY": "FILTERED",
-```
-
 ## Install
 Require via composer.
 ```
 composer require kouz/laravel-airbrake
 ```
-Add package to list of service providers in config/app.php
+For Laravel >=5.5 the package will be discoverd. For Laravel <=5.4 add package to list of service providers in config/app.php
 ```
 <?php
   //config/app.php
@@ -26,6 +21,20 @@ Add package to list of service providers in config/app.php
 Publish and fill out the config/airbrake.php file with your ID and key.
 ```
 php artisan vendor:publish --provider="Kouz\Providers\AirbrakeServiceProvider"
+```
+## Config
+The variables projectId and projectKey are required. Leave the rest empty to use Airbrake's default values.
+```
+    'projectId'     => '',
+    'projectKey'    => '',
+    'environment'   => env('APP_ENV', 'production'),
+
+    //leave the following options empty to use defaults
+
+    'appVersion'    => '',
+    'host'          => '',
+    'rootDirectory' => '',
+    'httpClient'    => '',
 ```
 
 ## Basic Usage
@@ -41,17 +50,17 @@ of a Airbrake\Notifier object then pass a exception to the notify function.
  *
  * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
  *
- * @param  \Exception  $e
+ * @param  \Exception  $exception
  * @return void
  */
-public function report(Exception $e)
+public function report(Exception $exception)
 {
-    if ($this->shouldReport($e)) {
+    if ($this->shouldReport($exception)) {
         $airbrakeNotifier = \App::make('Airbrake\Notifier');
-        $airbrakeNotifier->notify($e);
+        $airbrakeNotifier->notify($exception);
     }
 
-    parent::report($e);
+    parent::report($exception);
 }
 ```
 
