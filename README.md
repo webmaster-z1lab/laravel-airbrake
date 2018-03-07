@@ -12,11 +12,12 @@ composer require kouz/laravel-airbrake
 For Laravel >=5.5 the package will be discoverd. For Laravel <=5.4 add package to list of service providers in config/app.php
 ```
 <?php
-  //config/app.php
+
+    //config/app.php
   
-  'providers' => [
-    Kouz\LaravelAirbrake\ServiceProvider::class,
-  ],
+    'providers' => [
+        Kouz\LaravelAirbrake\ServiceProvider::class,
+    ],
 ```
 Publish and fill out the config/airbrake.php file with your ID and key.
 ```
