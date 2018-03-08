@@ -5,6 +5,7 @@ namespace Kouz\LaravelAirbrake;
 use Airbrake\MonologHandler;
 use Airbrake\Notifier;
 use Illuminate\Foundation\Application;
+use InvalidArgumentException;
 use Monolog\Logger as Monolog;
 
 class AirbrakeLogger
