@@ -60,7 +60,7 @@ Add the custom "airbrake" channel (outlined below) to config/logging.php. Then a
 ```
 
 ### Exception Handler
-The easiest way to notify airbrake is through the laravel exception handler as shown in the following code snippet. Inject or make a new instance
+To notify airbrake through the laravel exception handler as shown in the following code snippet. Inject or make a new instance
 of a Airbrake\Notifier object then pass a exception to the notify function.
 
 ```
@@ -85,7 +85,7 @@ public function report(Exception $exception)
 }
 ```
 
-### Custom Monolog Configuration 
+### <=5.5 Custom Monolog Configuration 
 To configure it as a Monolog handler you will have to create a custom configuration in bootstrap/app.php. This callback function is called 
 before the service providers are loaded. So it is necessary to directly use our AirbrakeHandler class instead of the provider.
 
