@@ -54,7 +54,7 @@ Add the custom "airbrake" channel (outlined below) to config/logging.php. Then a
         'airbrake' => [
             'driver' => 'custom',
             'via' => Kouz\LaravelAirbrake\AirbrakeLogger::class,
-            'level' => 'debug',
+            'level' => 'error',
         ],
     ]
 ```
