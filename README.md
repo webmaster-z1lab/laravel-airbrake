@@ -40,7 +40,7 @@ The variables projectId and projectKey are required. Leave the rest empty to use
 ```
 
 ## Basic Usage
-### 5.6 Custom Channel
+### >=5.6 Custom Channel
 Add the custom "airbrake" channel (outlined below) to config/logging.php. Then add the "airbrake" channel to the stack channel.
 ```
 //config/logging.php
