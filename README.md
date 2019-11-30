@@ -9,7 +9,7 @@ For Laravel >=6.0.0, you will need to downgrade Monolog to version 1.
 ```
 composer require monolog/monolog ^1.22
 ```
-Them require the this package via composer.
+Them require this package via composer.
 ```
 composer require kouz/laravel-airbrake
 ```
