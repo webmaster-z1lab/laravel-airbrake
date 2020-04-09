@@ -4,9 +4,8 @@
     "keywords": ["airbrake", "laravel"],
     "require": {
         "php": ">=5.4",
-        "airbrake/phpbrake": "^0.7.0",
-        "illuminate/support": "^5.0|^6.0",
-        "monolog/monolog": "^1.22"
+        "airbrake/phpbrake": "^0.7.3",
+        "illuminate/support": "^5.0|^6.0|^7.0"
     },
     "license": "MIT",
     "authors": [
