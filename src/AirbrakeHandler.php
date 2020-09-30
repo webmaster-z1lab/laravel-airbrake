@@ -20,9 +20,8 @@ class AirbrakeHandler
     }
 
     /**
-     * Build airbrake notifier.
-     *
-     * @return Airbrake\Notifier
+     * @return \Airbrake\Notifier
+     * @throws \Airbrake\Exception
      */
     public function handle()
     {

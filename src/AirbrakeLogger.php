@@ -4,7 +4,7 @@ namespace Kouz\LaravelAirbrake;
 
 use Airbrake\MonologHandler;
 use Airbrake\Notifier;
-use Illuminate\Foundation\Application;
+use Illuminate\Contracts\Foundation\Application;
 use InvalidArgumentException;
 use Monolog\Logger as Monolog;
 
